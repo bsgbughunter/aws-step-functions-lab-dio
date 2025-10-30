@@ -39,46 +39,14 @@ Principais características:
 - Criação de uma função Lambda para executar uma tarefa simples (ex: validação de dados, processamento ou cálculo);
 - Conexão da função Lambda como um *Task State* no fluxo Step Functions.
 
-🧩 3. Execução e Monitoramento
+ 3. Execução e Monitoramento
 - Execução do fluxo manualmente;
 - Verificação dos logs e status no painel do Step Functions;
 - Validação de saída e erros.
 
 ---
 
- Exemplo Simplificado de Definição de Workflow (JSON)
-
-```json
-{
-  "Comment": "Exemplo de workflow simples",
-  "StartAt": "ProcessarDados",
-  "States": {
-    "ProcessarDados": {
-      "Type": "Task",
-      "Resource": "arn:aws:lambda:us-east-1:123456789012:function:processarDados",
-      "Next": "ValidarResultado"
-    },
-    "ValidarResultado": {
-      "Type": "Choice",
-      "Choices": [
-        {
-          "Variable": "$.status",
-          "StringEquals": "OK",
-          "Next": "Sucesso"
-        }
-      ],
-      "Default": "Falha"
-    },
-    "Sucesso": {
-      "Type": "Succeed"
-    },
-    "Falha": {
-      "Type": "Fail"
-    }
-  }
-}
-
-📚 Insights e Aprendizados
+ Insights e Aprendizados
 
 Durante este desafio, aprendi:
 
@@ -89,3 +57,23 @@ A importância da integração entre Lambda e Step Functions para automação de
 Boas práticas de documentação e versionamento no GitHub;
 
 Como monitorar execuções e depurar erros utilizando o CloudWatch.
+
+---
+
+Tecnologias e Ferramentas Utilizadas
+
+ AWS Step Functions — orquestração de fluxos de trabalho
+
+ AWS Lambda — execução de tarefas automatizadas
+
+ Amazon S3 / DynamoDB — armazenamento de dados
+
+Amazon CloudWatch — monitoramento e logs
+
+ Draw.io — criação de diagramas de arquitetura
+
+ GitHub + Markdown — documentação técnica
+
+ ---
+
+ Desenvolvido por Beatriz Soares -Desafio proposto pela DIO - Formação AWS Cloud Practitioner.
