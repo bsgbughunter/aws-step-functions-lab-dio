@@ -1,0 +1,29 @@
+```json
+{
+  "Comment": "Exemplo de workflow simples",
+  "StartAt": "ProcessarDados",
+  "States": {
+    "ProcessarDados": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:123456789012:function:processarDados",
+      "Next": "ValidarResultado"
+    },
+    "ValidarResultado": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.status",
+          "StringEquals": "OK",
+          "Next": "Sucesso"
+        }
+      ],
+      "Default": "Falha"
+    },
+    "Sucesso": {
+      "Type": "Succeed"
+    },
+    "Falha": {
+      "Type": "Fail"
+    }
+  }
+}
